@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\DashboardController;
+use App\Http\Controllers\Auth\PostController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,5 @@ Auth::routes([
 ]);
 
 Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+
+Route::resource('/posts', PostController::class);
