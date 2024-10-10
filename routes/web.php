@@ -23,9 +23,9 @@ Route::get('/logout', function () {
 });
 
 Auth::routes([
-    'register'=>false
+    'register' => false
 ]);
 
-Route::get('dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 Route::resource('/posts', PostController::class);

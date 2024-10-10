@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('category_id');
-            $table->string('title');
+            $table->increments('id');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('category_id')->constrained();
+            $table->string('title'); //varchar 255
             $table->longText('description')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamps();

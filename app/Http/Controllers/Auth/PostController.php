@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Tag;
+use Database\Seeders\CategorySeeder;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -26,7 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('posts.create')->with('categories', $categories)->with('tags', $tags);
     }
 
     /**
@@ -36,9 +40,16 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-
-    }
+{
+    $request->validate([
+      'title' => 'request|string|max:255',
+    //    'description' => $request->description,
+    //    'status' => $request->status,
+    //    'category' => $request->category,
+    //    'tags' => $request->tags
+    ]);
+     return $request->all();
+}
 
     /**
      * Display the specified resource.
@@ -46,10 +57,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    public function show($id) {}
 
     /**
      * Show the form for editing the specified resource.
