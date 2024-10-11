@@ -30,7 +30,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('posts.create')->with('categories', $categories)->with('tags', $tags);
+        return view('posts.create')->with('categories',$categories)->with('tags',$tags);
     }
 
     /**
@@ -42,12 +42,10 @@ class PostController extends Controller
     public function store(Request $request)
 {
     $request->validate([
-      'title' => 'request|string|max:255',
-    //    'description' => $request->description,
-    //    'status' => $request->status,
-    //    'category' => $request->category,
-    //    'tags' => $request->tags
+        'title' => 'required|string|max:255',
+
     ]);
+
      return $request->all();
 }
 

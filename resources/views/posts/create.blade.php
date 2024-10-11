@@ -48,12 +48,10 @@
                             </select>
                         </div>
 
-
                         <div class="form-group">
                             <label>Category</label>
-                            <select name="category" class="form-control">
-                                <option value="" disabled selected>Choose option</option>
-
+                            <select name="is_publish" class="form-control">
+                                <option value="" disabled selected>choose option</option>
                                 @if (count($categories) > 0)
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -65,16 +63,13 @@
 
                         <div class="form-group">
                             <label>Tag</label>
-                            <select name="tags[]" class="form-control selectpicker" multiple data-live-search="true">
-                                <option value="" disabled selected>Choose Option</option>
+                            <select name="tags" class="form-control selectpicker" multiple data-live-search="true">
+                                <option value="" disabled selected>choose option</option>
                                 @if (count($tags) > 0)
                                     @foreach ($tags as $tag)
                                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                     @endforeach
-
                                 @endif
-
-                                </option>
                             </select>
                         </div>
 
