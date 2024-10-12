@@ -50,7 +50,7 @@
 
                         <div class="form-group">
                             <label>Category</label>
-                            <select name="is_publish" class="form-control">
+                            <select name="category" class="form-control">
                                 <option value="" disabled selected>choose option</option>
                                 @if (count($categories) > 0)
                                     @foreach ($categories as $category)
@@ -63,7 +63,7 @@
 
                         <div class="form-group">
                             <label>Tag</label>
-                            <select name="tags" class="form-control selectpicker" multiple data-live-search="true">
+                            <select name="tags[]" class="form-control selectpicker" multiple data-live-search="true">
                                 <option value="" disabled selected>choose option</option>
                                 @if (count($tags) > 0)
                                     @foreach ($tags as $tag)

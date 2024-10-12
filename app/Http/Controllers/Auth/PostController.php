@@ -30,7 +30,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('posts.create')->with('categories',$categories)->with('tags',$tags);
+        return view('posts.create')->with('categories', $categories)->with('tags', $tags);
     }
 
     /**
@@ -40,14 +40,34 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'title' => 'required|string|max:255',
+    {
+        // Validating the request
+        $request->validate([
+            'title' => ['required', 'string'],
+            'description' => ['required', 'string', 'max:3000'],
+            'status' => ['required', 'integer'],
+            'category' => ['required', 'integer'],
+            'tags' => ['required', 'array'],
+            'tags.*' => ['required', 'string']
+        ]);
+        Post::create([
+            'user_id' => auth()->id(),
+            'title' => $request->title,
+            'description' => $request->description,
+            'status' => $request->status,
+            'category_id' => $request->category
+        ]);
 
-    ]);
+        // Post::create([
+        //     'user_id' => auth()->id(),
+        //     'title' => $request->title,
+        //     'description' => $request->description,
+        //     'status' => $request->status,
+        //     'category_id' => $request->category,
+        // ]);
 
-     return $request->all();
-}
+        return $request->all();
+    }
 
     /**
      * Display the specified resource.
