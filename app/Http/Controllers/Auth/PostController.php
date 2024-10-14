@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\Posts\CreateRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\PostTag;
 use Database\Seeders\CategorySeeder;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -18,7 +22,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('posts.index');
     }
 
     /**
@@ -40,34 +44,32 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // Validating the request
-        $request->validate([
-            'title' => ['required', 'string'],
-            'description' => ['required', 'string', 'max:3000'],
-            'status' => ['required', 'integer'],
-            'category' => ['required', 'integer'],
-            'tags' => ['required', 'array'],
-            'tags.*' => ['required', 'string']
-        ]);
-        Post::create([
-            'user_id' => auth()->id(),
+
+{            $validated = $request->validate([
+
+                'title' => 'required',
+                'description' => 'required',
+                'status' => 'required',
+                'category' => 'required',
+            ]);
+        $post = Post::create([
+            'user_id' => 1, //auth()->id(),
             'title' => $request->title,
             'description' => $request->description,
             'status' => $request->status,
-            'category_id' => $request->category
+            'category_id' => $request->category,
         ]);
 
-        // Post::create([
-        //     'user_id' => auth()->id(),
-        //     'title' => $request->title,
-        //     'description' => $request->description,
-        //     'status' => $request->status,
-        //     'category_id' => $request->category,
-        // ]);
-
-        return $request->all();
+        foreach ($request->tags as $tag) {
+            PostTag::create([
+                'tag_id' => $tag,
+                'post_id' => $post->id,
+            ]);
+        }
     }
+
+
+
 
     /**
      * Display the specified resource.

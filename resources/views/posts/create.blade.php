@@ -48,10 +48,11 @@
                             </select>
                         </div>
 
+
                         <div class="form-group">
                             <label>Category</label>
-                            <select name="category" class="form-control">
-                                <option value="" disabled selected>choose option</option>
+                            <select name="category" class="form-control" >
+                                <option value="" disabled selected>Choose option</option>
                                 @if (count($categories) > 0)
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
