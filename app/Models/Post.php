@@ -9,10 +9,11 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','category_id','title','description','status'];
+    protected $table = 'posts';
+    protected $fillable = ['user_id', 'category_id', 'title', 'description', 'status'];
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'post_tags');
     }
 }
