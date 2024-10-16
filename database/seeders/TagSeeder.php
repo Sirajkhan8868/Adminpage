@@ -15,15 +15,15 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['php','laravel php','back end development','front end development'];
+        // $categories = ['php','laravel php','back end development','front end development'];
 
-        foreach($categories as $category)
-        {
-            Tag::create(
-                [
-                    'name' => $category
-                ]
-                );
-        }
+        // foreach($categories as $category)
+        // {
+        //     Tag::create(
+        //         [
+        //             'name' => $category
+        //         ]
+        //         );
+        // }
     }
 }

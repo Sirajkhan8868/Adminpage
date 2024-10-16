@@ -1,45 +1,49 @@
-<?php
+@extends('layouts.auth')
 
-namespace App\Http\Controllers\Auth;
+@section('title', 'posts')
 
-use App\Http\Controllers\Controller;
-use App\Models\Post;
+@section('content')
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h2>Posts</h2>
+                </div>
+                <div class="card-body">
 
-use App\Models\PostTag;
-use Illuminate\Http\Request;
+                    @if (count($posts) > 0)
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($posts as $post)
 
-class PostController extends Controller
-{
-    public function store(Request $request)
-    {
+                             <tr>
+                                <td>{{ $post->title }}</td>
+                                <td>{{ $post->description }}</td>
+                                <td>{{ $post->category->name }}</td>
+                                <td>{{ $post->user->name }}</td>
+                                <td>{{ $post->status ==1 ? 'Active': 'inActive' }}</td>
+                             </tr>
 
-        // Validation
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'status' => 'required',
-            'category' => 'required',
-            'tags' => 'required|array', // Make sure tags are passed as an array
-        ]);
+                            @endforeach
+                        </tbody>
+                      </table>
+                    @else
+                    <h3 class="text-center text-danger">No Post found..</h3>
+                    @endif
 
-        // Create the post
-        $post = Post::create([
-            'user_id' => 1, // Use auth()->id() for actual logged-in user
-            'title' => $request->title,
-            'description' => $request->description,
-            'status' => $request->status,
-            'category_id' => $request->category,
-        ]);
+                </div>
 
-        // Attach tags to the post
-        foreach ($request->tags as $tag) {
-            PostTag::create([
-                'tag_id' => $tag,
-                'post_id' => $post->id,
-            ]);
-        }
+            </div>
+        </div>
+    </div>
 
-        return redirect()->back()->with('success', 'Post created successfully!');
-    }
-}
-
+@endsection

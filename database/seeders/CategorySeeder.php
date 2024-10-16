@@ -15,15 +15,15 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['Science','Sports','Enterinment'];
+        // $categories = ['Science','Sports','Enterinment'];
 
-        foreach($categories as $category)
-        {
-            Category::create(
-                [
-                    'name' => $category
-                ]
-                );
-        }
+        // foreach($categories as $category)
+        // {
+        //     Category::create(
+        //         [
+        //             'name' => $category
+        //         ]
+        //         );
+        // }
     }
 }

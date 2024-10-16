@@ -16,4 +16,17 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class, 'post_tags');
     }
+    //relation create post and categories
+
+    public function category()
+    {
+       return $this->belongsTo(Category::class);
+    }
+
+    //retation create user to post
+
+    public function user()
+    {
+       return $this->belongsTo(user::class);
+    }
 }

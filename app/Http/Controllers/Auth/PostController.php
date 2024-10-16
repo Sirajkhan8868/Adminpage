@@ -15,7 +15,8 @@ class PostController extends Controller
 
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::all();
+        return view('posts.index', compact('posts'));
     }
 
 
@@ -37,7 +38,7 @@ class PostController extends Controller
             'status' => 'required',
             'category' => 'required',
         ]);
-        dd($request->post());
+        // dd($request->all());
         $post = Post::create([
             'user_id' => 1,
             'title' => $request->title,
@@ -45,6 +46,9 @@ class PostController extends Controller
             'status' => $request->status,
             'category_id' => $request->category,
         ]);
+
+        $request->session()->flash('alert-success', 'Post Created Successful');
+        return to_route('posts.index');
 
         foreach ($request->tags as $tag) {
             PostTag::create([

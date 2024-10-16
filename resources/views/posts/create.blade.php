@@ -51,7 +51,7 @@
 
                         <div class="form-group">
                             <label>Category</label>
-                            <select name="category" class="form-control" >
+                            <select name="category" class="form-control">
                                 <option value="" disabled selected>Choose option</option>
                                 @if (count($categories) > 0)
                                     @foreach ($categories as $category)
