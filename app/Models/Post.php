@@ -20,13 +20,13 @@ class Post extends Model
 
     public function category()
     {
-       return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     //retation create user to post
 
     public function user()
     {
-       return $this->belongsTo(user::class);
+        return $this->belongsTo(user::class);
     }
 }

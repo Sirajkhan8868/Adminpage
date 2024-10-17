@@ -142,7 +142,7 @@
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                                 data-target="#email" aria-expanded="false" aria-controls="email">
                                 <i class="mdi mdi-email"></i>
-                                <span class="nav-text">email</span> <b class="caret"></b>
+                                <span class="nav-text">Posts</span> <b class="caret"></b>
                             </a>
                             <ul class="collapse" id="email" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
@@ -150,8 +150,8 @@
 
 
                                     <li>
-                                        <a class="sidenav-item-link" href="email-inbox.html">
-                                            <span class="nav-text">Email Inbox</span>
+                                        <a class="sidenav-item-link" href="{{route('posts.create')}}">
+                                            <span class="nav-text">Create Posts</span>
 
                                         </a>
                                     </li>
@@ -162,8 +162,8 @@
 
 
                                     <li>
-                                        <a class="sidenav-item-link" href="email-details.html">
-                                            <span class="nav-text">Email Details</span>
+                                        <a class="sidenav-item-link" href="{{route('posts.index')}}">
+                                            <span class="nav-text">Posts</span>
 
                                         </a>
                                     </li>

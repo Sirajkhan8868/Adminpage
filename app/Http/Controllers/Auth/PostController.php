@@ -47,7 +47,7 @@ class PostController extends Controller
             'category_id' => $request->category,
         ]);
 
-        $request->session()->flash('alert-success', 'Post Created Successful');
+        // $request->session()->flash('alert-success', 'Post Created Successful');
         return to_route('posts.index');
 
         foreach ($request->tags as $tag) {
@@ -67,13 +67,16 @@ class PostController extends Controller
 
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('posts.edit', compact('post', 'categories', 'tags'));
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+
     }
 
 

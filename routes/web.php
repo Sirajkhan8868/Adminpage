@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/logout', function () {
     auth()->logout();
-    // return view('welcome');
+
 });
 
 Auth::routes([
