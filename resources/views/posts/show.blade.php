@@ -34,8 +34,8 @@
                                     <th scope="col">Title</th>
                                     <td>{{ $post->user->name }}</td>
 
-                                    <th scope="col">status</th>
-                                    <td>{{ $post->status === ? 'Published' : 'Draft' }}</td>
+                                    {{-- <th scope="col">status</th> --}}
+                                    {{-- <td>{{ $post->status === ? 'Published' : 'Draft' }}</td> --}}
 
                                 </tr>
                             </tbody>
