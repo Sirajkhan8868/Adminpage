@@ -24,26 +24,26 @@
                         </div>
                     @endif
 
-                    <form method="post" action="{{ route('posts.update',$post->id) }}">
+                    <form method="post" action="{{ route('posts.update', $post->id) }}">
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
                             <label>Title</label>
-                            <input type="text" name="title" value="{{ old('title',$post->title) }}" class="form-control"
-                                autocomplete="off" placeholder="Title">
+                            <input type="text" name="title" value="{{ old('title', $post->title) }}"
+                                class="form-control" autocomplete="off" placeholder="Title">
                         </div>
 
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea name="description" cols="30" rows="3" class="form-control" placeholder="description">{{ old('title',$post->title) }}</textarea>
+                            <textarea name="description" cols="30" rows="3" class="form-control" placeholder="description">{{ old('description', $post->description) }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label>Is Publish</label>
                             <select name="status" class="form-control">
                                 <option value="" disabled selected>Choose option</option>
-                                <option value="1">Publish</option>
-                                <option value="0">Games</option>
+                                <option @selected(old('status', $post->status) == 1) value="1">Publish</option>
+                                <option @selected(old('status', $post->status) == 0) value="0">Games</option>
                             </select>
                         </div>
 
@@ -54,7 +54,8 @@
                                 <option value="" disabled selected>Choose option</option>
                                 @if (count($categories) > 0)
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        <option selected value="{{ $category->id }}">
+                                            {{ $category->name }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -66,7 +67,7 @@
                                 <option value="" disabled selected>choose option</option>
                                 @if (count($tags) > 0)
                                     @foreach ($tags as $tag)
-                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                        <option selected value="{{ $tag->id }}">{{ $tag->name }}</option>
                                     @endforeach
                                 @endif
                             </select>
