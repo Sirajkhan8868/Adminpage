@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'View Posts')
+@section('title', 'View posts')
 
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -17,39 +17,49 @@
                 </div>
 
                 <div class="card-body">
-
-                    @if (count($posts) > 0)
+                    @if ($post)
                         <table class="table" id="posts">
                             <tbody>
                                 <tr>
                                     <th scope="col">Title</th>
                                     <td>{{ $post->title }}</td>
+                                </tr>
+
+                                <tr>
 
                                     <th scope="col">Description</th>
                                     <td>{{ $post->description }}</td>
 
+                                </tr>
+
+                                <tr>
+
                                     <th scope="col">Category</th>
-                                    <td>{{ $post->category->name}}</td>
-
-                                    <th scope="col">Title</th>
-                                    <td>{{ $post->user->name }}</td>
-
-                                    {{-- <th scope="col">status</th> --}}
-                                    {{-- <td>{{ $post->status === ? 'Published' : 'Draft' }}</td> --}}
+                                    <td>{{ $post->category->name }}</td>
 
                                 </tr>
+
+                                <tr>
+
+                                    <th scope="col">Username</th>
+                                    <td>{{ $post->user->name }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="col">Status</th>
+                                    <td>{{ $post->status === 1 ? 'Published' : 'Draft' }}</td>
+                                </tr>
+
+
                             </tbody>
-                    @endforeach
-                    </tbody>
-                    </table>
-                @else
-                    <h3 class="text-center text-danger">No Post found..</h3>
+                        </table>
+                    @else
+                        <h3 class="text-center text-danger">No Post found..</h3>
                     @endif
-
                 </div>
-
             </div>
         </div>
     </div>
+
 
 @endsection

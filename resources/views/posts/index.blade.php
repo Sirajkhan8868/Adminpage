@@ -56,8 +56,8 @@
                                         <td>{{ $post->user->name }}</td>
                                         <td>{{ $post->status == 1 ? 'Active' : 'inActive' }}</td>
                                         <td id="outer">
-                                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-sm btn-success inner"><i
-                                                    class="fas fa-eye"></i></a>
+                                            <a href="{{ route('posts.show', $post->id) }}"
+                                                class="btn btn-sm btn-success inner"><i class="fas fa-eye"></i></a>
                                             <a href="{{ route('posts.edit', $post->id) }}"
                                                 class="btn btn-sm btn-info inner"><i class="fas fa-edit"></i></a>
                                             <form method="post" action="{{ route('posts.destroy', $post->id) }}"

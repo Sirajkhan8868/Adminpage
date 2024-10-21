@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\auth\CategoriesController;
 use App\Http\Controllers\Auth\DashboardController;
 use App\Http\Controllers\Auth\PostController;
 use App\Http\Controllers\HomeController;
@@ -29,3 +30,4 @@ Auth::routes([
 Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 Route::resource('posts', PostController::class);
+Route::get('auth/categories',[CategoriesController::class,'OpenCategoriesPage'])->name('auth.categories');

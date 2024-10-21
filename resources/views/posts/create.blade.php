@@ -4,6 +4,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets/auth/css/multi-dropdown.css') }}">
+
 @endsection
 
 @section('content')
@@ -30,13 +31,13 @@
                         @csrf
                         <div class="form-group">
                             <label>Title</label>
-                            <input type="text" name="title" value="{{ old('title') }}" class="form-control"
+                            <input type="text" id="title" name="title" value="{{ old('title') }}" class="form-control"
                                 autocomplete="off" placeholder="Title">
                         </div>
 
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea name="description" cols="30" rows="3" class="form-control" placeholder="description"></textarea>
+                            <textarea name="description" id="des" cols="30" rows="3" class="form-control" placeholder="description"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -76,6 +77,13 @@
 
 
                         <button type="submit" class="btn btn-primary">Submit</button>
+
+                        <script src="{{ asset('node_modules/ckeditor4/ckeditor.js') }}"></script>
+                        <script>
+                            CKEDITOR.replace('description');
+                        </script>
+
+
                     </form>
 
                 </div>
@@ -85,6 +93,9 @@
     </div>
 
 @endsection
+
+  </script>
+
 
 @section('scripts')
 

@@ -63,7 +63,7 @@
                 <div class="app-brand">
                     <a href="/index.html">
                         <img src="{{ asset('assets/auth/images/logo.png') }}" alt="Mono">
-                        <span class="brand-name">MONO</span>
+                        <span class="brand-name">SK</span>
                     </a>
                 </div>
                 <!-- begin sidebar scrollbar -->
@@ -150,7 +150,7 @@
 
 
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('posts.create')}}">
+                                        <a class="sidenav-item-link" href="{{ route('posts.create') }}">
                                             <span class="nav-text">Create Posts</span>
 
                                         </a>
@@ -162,7 +162,7 @@
 
 
                                     <li>
-                                        <a class="sidenav-item-link" href="{{route('posts.index')}}">
+                                        <a class="sidenav-item-link" href="{{ route('posts.index') }}">
                                             <span class="nav-text">Posts</span>
 
                                         </a>
