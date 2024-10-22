@@ -32,5 +32,5 @@ Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashbo
 
 Route::resource('posts', PostController::class);
 Route::get('auth/categories',[CategoriesController::class,'OpenCategoriesPage'])->name('auth.categories');
-Route::get('auth/tags',[TagController::class,'OpenTagsPage'])->name('auth.tags');
+// Route::get('auth/tags',[TagController::class,'OpenTagsPage'])->name('auth.tags');
 
