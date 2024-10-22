@@ -4,7 +4,6 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets/auth/css/multi-dropdown.css') }}">
-
 @endsection
 
 @section('content')
@@ -13,8 +12,6 @@
             <div class="card card-default">
                 <div class="card-header">
                     <h2>Create Page</h2>
-
-
                 </div>
                 <div class="card-body">
                     @if ($errors->any())
@@ -31,13 +28,14 @@
                         @csrf
                         <div class="form-group">
                             <label>Title</label>
-                            <input type="text" id="title" name="title" value="{{ old('title') }}" class="form-control"
-                                autocomplete="off" placeholder="Title">
+                            <input type="text" id="title" name="title" value="{{ old('title') }}"
+                                class="form-control" autocomplete="off" placeholder="Title">
                         </div>
 
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea name="description" id="des" cols="30" rows="3" class="form-control" placeholder="description"></textarea>
+                            <textarea name="description" id="description" cols="30" rows="3" class="form-control"
+                                placeholder="description">{{ old('description') }}</textarea>
                         </div>
 
                         <div class="form-group">
@@ -48,7 +46,6 @@
                                 <option value="0">Games</option>
                             </select>
                         </div>
-
 
                         <div class="form-group">
                             <label>Category</label>
@@ -62,7 +59,6 @@
                             </select>
                         </div>
 
-
                         <div class="form-group">
                             <label>Tag</label>
                             <select name="tags[]" class="form-control selectpicker" multiple data-live-search="true">
@@ -75,30 +71,23 @@
                             </select>
                         </div>
 
-
                         <button type="submit" class="btn btn-primary">Submit</button>
-
-                        <script src="{{ asset('node_modules/ckeditor4/ckeditor.js') }}"></script>
-                        <script>
-                            CKEDITOR.replace('description');
-                        </script>
-
-
                     </form>
-
                 </div>
-
             </div>
         </div>
     </div>
-
 @endsection
 
-  </script>
-
-
 @section('scripts')
-
     <script src="{{ asset('assets/auth/js/multi-dropdown.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 
 @endsection

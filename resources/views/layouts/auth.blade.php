@@ -95,9 +95,16 @@
                         </li>
 
                         <li>
-                            <a class="sidenav-item-link" href="chat.html">
+                            <a class="sidenav-item-link" href="{{ route('auth.categories') }}">
                                 <i class="mdi mdi-wechat"></i>
                                 <span class="nav-text">Catagories</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="sidenav-item-link" href="">
+                                <i class="mdi mdi-wechat"></i>
+                                <span class="nav-text">Tags</span>
                             </a>
                         </li>
 
@@ -109,17 +116,6 @@
                             <a class="sidenav-item-link" href="contacts.html">
                                 <i class="mdi mdi-phone"></i>
                                 <span class="nav-text">Contacts</span>
-                            </a>
-                        </li>
-
-
-
-
-
-                        <li>
-                            <a class="sidenav-item-link" href="team.html">
-                                <i class="mdi mdi-account-group"></i>
-                                <span class="nav-text">Team</span>
                             </a>
                         </li>
 
@@ -401,12 +397,6 @@
 
 
 
-                                    <li>
-                                        <a class="sidenav-item-link" href="switches.html">
-                                            <span class="nav-text">Switches</span>
-
-                                        </a>
-                                    </li>
 
 
 
@@ -529,9 +519,7 @@
                                                     <a href="google-maps.html">Google Map</a>
                                                 </li>
 
-                                                <li>
-                                                    <a href="vector-maps.html">Vector Map</a>
-                                                </li>
+
 
                                             </div>
                                         </ul>
