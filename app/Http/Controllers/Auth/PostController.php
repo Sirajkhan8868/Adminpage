@@ -26,6 +26,7 @@ class PostController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         return view('posts.create')->with('categories', $categories)->with('tags', $tags);
+
     }
 
 
@@ -48,21 +49,24 @@ class PostController extends Controller
             'category_id' => $request->category,
         ]);
 
-        $request->session()->flash('alert-success', 'Post Created Successful');
-        return to_route('posts.index');
+        // $request->session()->flash('alert-success', 'Post Created Successful');
+        // return to_route('posts.index');
 
         foreach ($request->tags as $tag) {
             PostTag::create([
                 'tag_id' => $tag,
                 'post_id' => $post->id,
             ]);
+
         }
+        return redirect('dashboard');
     }
 
 
-    public function show(Post $post) {
+    public function show(Post $post)
+    {
 
-        return view('posts.show',compact('post'));
+        return view('posts.show', compact('post'));
     }
 
 
@@ -79,7 +83,7 @@ class PostController extends Controller
     {
         $post->update([
 
-           'user_id' => 1,
+            'user_id' => 1,
             'title' => $request->title,
             'description' => $request->description,
             'status' => $request->status,
@@ -94,8 +98,8 @@ class PostController extends Controller
             ]);
         }
 
-        $request->session()->flash('alert-success', 'Post Updated Successful');
-        return to_route('posts.index');
+        // $request->session()->flash('alert-success', 'Post Updated Successful');
+        // return to_route('posts.index');
     }
 
 

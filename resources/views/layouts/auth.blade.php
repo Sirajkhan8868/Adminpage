@@ -9,15 +9,12 @@
 
     <title>@yield('title')</title>
 
-    <!-- theme meta -->
     <meta name="theme-name" content="mono" />
 
-    <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto" rel="stylesheet">
     <link href="{{ asset('assets/auth/plugins/material/css/materialdesignicons.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/auth/plugins/simplebar/simplebar.css') }}" rel="stylesheet" />
 
-    <!-- PLUGINS CSS STYLE -->
     <link href="{{ asset('assets/auth/plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
 
 
@@ -30,13 +27,11 @@
     <link href="{{ asset('assets/auth/plugins/toaster/toastr.min.css') }}" rel="stylesheet" />
 
 
-    <!-- MONO CSS -->
     <link id="main-css-href" rel="stylesheet" href="{{ asset('assets/auth/css/style.css') }}" />
 
 
 
 
-    <!-- FAVICON -->
     <link href="{{ asset('assets/auth/favicon.png') }}" rel="shortcut icon" />
 
 
@@ -48,27 +43,23 @@
 
 
 
-    <!-- ====================================
-    ——— WRAPPER
-    ===================================== -->
+
     <div class="wrapper">
 
 
-        <!-- ====================================
-          ——— LEFT SIDEBAR WITH OUT FOOTER
-        ===================================== -->
+
         <aside class="left-sidebar sidebar-dark" id="left-sidebar">
             <div id="sidebar" class="sidebar sidebar-with-footer">
-                <!-- Aplication Brand -->
+
                 <div class="app-brand">
                     <a href="/index.html">
                         <img src="{{ asset('assets/auth/images/logo.png') }}" alt="Mono">
                         <span class="brand-name">SK</span>
                     </a>
                 </div>
-                <!-- begin sidebar scrollbar -->
+
                 <div class="sidebar-left" data-simplebar style="height: 100%;">
-                    <!-- sidebar menu -->
+
                     <ul class="nav sidebar-inner" id="sidebar-menu">
 
 
@@ -86,7 +77,7 @@
 
                         <li>
                             <a class="sidenav-item-link" href="{{ route('auth.categories') }}">
-                                <i class="fa-solid fa-list" ></i>
+                                <i class="fa-solid fa-list"></i>
                                 <span class="nav-text">Catagories</span>
                             </a>
                         </li>
@@ -101,7 +92,7 @@
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                                 data-target="#email" aria-expanded="false" aria-controls="email">
-                                <i class="fa-regular fa-address-card" ></i>
+                                <i class="fa-regular fa-address-card"></i>
                                 <span class="nav-text">Posts</span> <b class="caret"></b>
                             </a>
                             <ul class="collapse" id="email" data-parent="#sidebar-menu">
@@ -116,20 +107,20 @@
                                         </a>
                                     </li>
 
-                                  <li>
+                                    <li>
                                         <a class="sidenav-item-link" href="{{ route('posts.index') }}">
                                             <span class="nav-text">Posts</span>
 
                                         </a>
                                     </li>
 
-                                   <li>
+                                    <li>
                                         <a class="sidenav-item-link" href="email-compose.html">
                                             <span class="nav-text">Email Compose</span>
 
                                         </a>
                                     </li>
-                              </div>
+                                </div>
                             </ul>
                         </li>
 
@@ -142,10 +133,9 @@
 
         <div class="page-wrapper">
 
-            <!-- Header -->
             <header class="main-header" id="header">
                 <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
-                    <!-- Sidebar toggle button -->
+
                     <button id="sidebar-toggler" class="sidebar-toggle">
                         <span class="sr-only">Toggle navigation</span>
                     </button>
@@ -154,8 +144,8 @@
 
                     <div class="navbar-right ">
 
-                        <!-- search form -->
                         <div class="search-form">
+
                             <form action="index.html" method="get">
                                 <div class="input-group input-group-sm" id="input-group-search">
                                     <input type="text" autocomplete="off" name="query" id="search-input"
@@ -170,7 +160,7 @@
 
                         <ul class="nav navbar-nav">
                             <li class="custom-dropdown">
-                                <!-- User Account -->
+
                             <li class="dropdown user-menu">
                                 <button class="dropdown-toggle nav-link" data-toggle="dropdown">
                                     <img src="{{ asset('assets/auth/images/user/user-xs-01.jpg') }}"
@@ -184,7 +174,7 @@
                                             <span class="nav-text">My Profile</span>
                                         </a>
                                     </li>
-                                     <li class="dropdown-footer">
+                                    <li class="dropdown-footer">
                                         <form id="logout-form" method="POST" action="{{ route('logout') }}">
                                             @csrf
 
@@ -203,9 +193,8 @@
             </header>
 
 
-            {{-- content will be here --}}
             @yield('content')
-            <!-- Footer -->
+
             <footer class="footer mt-auto">
                 <div class="copyright bg-white">
                     <p>
@@ -233,7 +222,6 @@
         <script src="{{ asset('assets/auth/js/custom.js') }}"></script>
         @yield('scripts')
 
-        <!--  -->
 
 
 </body>

@@ -32,16 +32,16 @@
                     <ul class="dropdown-menu dropdown-menu-search">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Morbi leo risus</a>
+                            <a class="nav-link" href="index.html"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Dapibus ac facilisis in</a>
+                            <a class="nav-link" href="index.html"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Porta ac consectetur ac</a>
+                            <a class="nav-link" href="index.html"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Vestibulum at eros</a>
+                            <a class="nav-link" href="index.html"></a>
                         </li>
 
                     </ul>
@@ -164,6 +164,8 @@
                 </div>
 
             </div>
+
+            <h1 class="text-center">Blog Post</h1>
 
 
 

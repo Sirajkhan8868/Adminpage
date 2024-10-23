@@ -8,16 +8,6 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/logout', function () {
     auth()->logout();
@@ -32,5 +22,4 @@ Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashbo
 
 Route::resource('posts', PostController::class);
 Route::get('auth/categories',[CategoriesController::class,'OpenCategoriesPage'])->name('auth.categories');
-// Route::get('auth/tags',[TagController::class,'OpenTagsPage'])->name('auth.tags');
 

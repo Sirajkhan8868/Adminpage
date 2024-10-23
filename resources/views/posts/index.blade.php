@@ -23,7 +23,7 @@
         <div class="content">
             <div class="card card-default">
                 <div class="card-header">
-                    <h2>Create Post</h2>
+                    <h2>Post Created</h2>
                 </div>
 
                 @if (Session::has('alert-success'))
