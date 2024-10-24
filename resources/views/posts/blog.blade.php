@@ -7,8 +7,6 @@
 @endsection
 
 @section('content')
-
-<h1>hello</h1>
     <div class="content-wrapper">
         <div class="content">
             <div class="card card-default">
@@ -16,17 +14,8 @@
                     <h2>Create Page</h2>
                 </div>
                 <div class="card-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
 
-                    <form method="post" action="{{ route('posts.store') }}">
+                    <form method="post" action="{{ route('dashboard') }}">
                         @csrf
                         <div class="form-group">
                             <label>Title</label>
@@ -79,17 +68,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('scripts')
-    <script src="{{ asset('assets/auth/js/multi-dropdown.js') }}"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#description'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-
 @endsection

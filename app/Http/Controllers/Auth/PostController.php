@@ -7,40 +7,32 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\PostTag;
-use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Http\Request;
-
 
 class PostController extends Controller
 {
-
     public function index()
     {
         $posts = Post::all();
         return view('posts.index', compact('posts'));
     }
 
-
     public function create()
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('posts.create')->with('categories', $categories)->with('tags', $tags);
-
+        return view('posts.create', compact('categories', 'tags'));
     }
 
-
     public function store(Request $request)
-
     {
         $validated = $request->validate([
-
             'title' => 'required',
             'description' => 'required',
             'status' => 'required',
             'category' => 'required',
         ]);
-        // dd($request->all());
+
         $post = Post::create([
             'user_id' => 1,
             'title' => $request->title,
@@ -49,26 +41,20 @@ class PostController extends Controller
             'category_id' => $request->category,
         ]);
 
-        // $request->session()->flash('alert-success', 'Post Created Successful');
-        // return to_route('posts.index');
-
         foreach ($request->tags as $tag) {
             PostTag::create([
                 'tag_id' => $tag,
                 'post_id' => $post->id,
             ]);
-
         }
-        return redirect('dashboard');
-    }
 
+        return redirect()->route('dashboard')->with('success', 'Blog created successfully!');
+    }
 
     public function show(Post $post)
     {
-
         return view('posts.show', compact('post'));
     }
-
 
     public function edit($id)
     {
@@ -78,18 +64,17 @@ class PostController extends Controller
         return view('posts.edit', compact('post', 'categories', 'tags'));
     }
 
-
     public function update(Request $request, Post $post)
     {
         $post->update([
-
-            'user_id' => 1,
+            'user_id' => auth()->id(),
             'title' => $request->title,
             'description' => $request->description,
             'status' => $request->status,
             'category_id' => $request->category,
-
         ]);
+
+        PostTag::where('post_id', $post->id)->delete();
 
         foreach ($request->tags as $tag) {
             PostTag::create([
@@ -98,24 +83,13 @@ class PostController extends Controller
             ]);
         }
 
-        // $request->session()->flash('alert-success', 'Post Updated Successful');
-        // return to_route('posts.index');
+        return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
     }
-
 
     public function destroy(Post $post)
     {
-        // return $id;
-        // $post = Post::find($id);
-
-        // // if (! $post)
-        // if(! $post)
-        // {
-        //     abort(404);
-        // }
         $post->tags()->detach();
         $post->delete();
-        return to_route('posts.index');
-        $request->session()->flash('alert-success', 'Post Deleted Successful');
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully!');
     }
 }

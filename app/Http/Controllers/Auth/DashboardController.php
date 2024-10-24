@@ -17,7 +17,7 @@ class DashboardController extends Controller
     $categoriesCount = Category::count();
     $tagsCount = Tag::count();
     $usersCount = User::count();
-    // dd($postsCount);
-    return view('layouts.dashboard', compact('postsCount','categoriesCount','tagsCount','usersCount'));
+    $posts = Post::all();
+    return view('layouts.dashboard', compact('postsCount','categoriesCount','tagsCount','usersCount','posts'));
    }
 }
